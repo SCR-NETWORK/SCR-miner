@@ -13,7 +13,7 @@ use crate::{
     target::{self, Uint256},
     Error, Hash,
 };
-use pyrin_miner::Worker;
+use SCR_miner::Worker;
 
 mod hasher;
 mod heavy_hash;

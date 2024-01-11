@@ -1,9 +1,9 @@
 #[macro_use]
-extern crate pyrin_miner;
+extern crate SCR_miner;
 
 use clap::{ArgMatches, FromArgMatches};
 use cust::prelude::*;
-use pyrin_miner::{Plugin, Worker, WorkerSpec};
+use SCR_miner::{Plugin, Worker, WorkerSpec};
 use log::LevelFilter;
 use std::error::Error as StdError;
 #[cfg(feature = "overclock")]
@@ -57,7 +57,7 @@ impl Plugin for CudaPlugin {
     }
 
     //noinspection RsTypeCheck
-    fn process_option(&mut self, matches: &ArgMatches) -> Result<usize, pyrin_miner::Error> {
+    fn process_option(&mut self, matches: &ArgMatches) -> Result<usize, SCR_miner::Error> {
         let opts: CudaOpt = CudaOpt::from_arg_matches(matches)?;
 
         self._enabled = !opts.cuda_disable;

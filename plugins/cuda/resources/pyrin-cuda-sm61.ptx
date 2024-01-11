@@ -23,13 +23,13 @@
 .const .align 1 .b8 powP[200] = {61, 216, 246, 161, 13, 255, 60, 17, 60, 126, 2, 183, 85, 136, 191, 41, 210, 68, 251, 14, 114, 46, 95, 30, 160, 105, 152, 245, 163, 164, 165, 27, 101, 45, 94, 135, 202, 175, 47, 123, 70, 226, 220, 41, 214, 97, 239, 74, 16, 91, 65, 173, 30, 152, 58, 24, 156, 194, 155, 120, 12, 246, 107, 119, 64, 49, 102, 136, 51, 241, 235, 248, 240, 95, 40, 67, 60, 28, 101, 46, 10, 74, 241, 64, 5, 7, 150, 15, 82, 145, 41, 91, 135, 103, 227, 68, 21, 55, 177, 37, 164, 241, 112, 236, 137, 218, 233, 130, 143, 93, 200, 230, 35, 178, 180, 133, 31, 96, 26, 178, 70, 106, 163, 100, 144, 84, 133, 52, 26, 133, 47, 122, 28, 221, 6, 15, 66, 177, 59, 86, 29, 2, 162, 193, 228, 104, 22, 69, 228, 229, 29, 186, 141, 95, 9, 5, 65, 87, 2, 209, 74, 207, 206, 155, 132, 78, 202, 137, 219, 46, 116, 168, 39, 148, 176, 72, 114, 82, 139, 231, 156, 206, 252, 177, 188, 165, 175, 130, 207, 41, 17, 93, 131, 67, 130, 111, 120, 124, 185, 2};
 .const .align 1 .b8 heavyP[200] = {9, 133, 36, 178, 82, 76, 215, 58, 22, 66, 159, 47, 14, 155, 98, 121, 238, 248, 199, 22, 72, 255, 20, 122, 152, 100, 5, 128, 76, 95, 167, 17, 218, 206, 238, 68, 223, 224, 32, 231, 105, 64, 243, 20, 46, 216, 199, 114, 186, 53, 137, 147, 42, 255, 0, 193, 98, 196, 15, 37, 64, 144, 33, 94, 72, 106, 207, 13, 166, 249, 57, 128, 12, 61, 42, 121, 159, 170, 188, 160, 38, 162, 169, 208, 93, 192, 49, 244, 63, 140, 193, 84, 195, 76, 31, 211, 61, 204, 105, 167, 1, 125, 107, 108, 228, 147, 36, 86, 211, 91, 198, 46, 68, 176, 205, 153, 58, 75, 247, 78, 176, 242, 52, 84, 131, 134, 76, 119, 22, 148, 188, 54, 176, 97, 233, 7, 7, 204, 101, 119, 177, 29, 143, 126, 57, 109, 196, 186, 128, 219, 143, 234, 88, 202, 52, 123, 211, 242, 146, 185, 87, 185, 129, 132, 4, 197, 118, 199, 46, 194, 18, 81, 103, 159, 195, 71, 10, 12, 41, 181, 157, 57, 187, 146, 21, 198, 159, 47, 49, 224, 154, 84, 53, 218, 185, 16, 125, 50, 25, 22};
 
-.func  (.param .b64 func_retval0) _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh(
-	.param .b64 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0,
-	.param .b64 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1,
-	.param .b64 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_2,
-	.param .b64 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3,
-	.param .b32 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_4,
-	.param .b64 _ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5
+.func  (.param .b64 func_retval0) _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh(
+	.param .b64 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0,
+	.param .b64 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1,
+	.param .b64 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_2,
+	.param .b64 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3,
+	.param .b32 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_4,
+	.param .b64 _ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5
 )
 {
 	.local .align 16 .b8 	__local_depot0[224];
@@ -43,12 +43,12 @@
 
 	mov.u64 	%SPL, __local_depot0;
 	cvta.local.u64 	%SP, %SPL;
-	ld.param.u8 	%rs75, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_4];
-	ld.param.u64 	%rd167, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0];
-	ld.param.u64 	%rd172, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1];
-	ld.param.u64 	%rd72, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_2];
-	ld.param.u64 	%rd166, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3];
-	ld.param.u64 	%rd74, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
+	ld.param.u8 	%rs75, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_4];
+	ld.param.u64 	%rd167, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0];
+	ld.param.u64 	%rd172, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1];
+	ld.param.u64 	%rd72, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_2];
+	ld.param.u64 	%rd166, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3];
+	ld.param.u64 	%rd74, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
 	cvta.to.local.u64 	%rd155, %rd74;
 	cvta.to.local.u64 	%rd2, %rd72;
 	add.u64 	%rd153, %SPL, 16;
@@ -1131,12 +1131,12 @@ $L__BB0_19:
 	bra.uni 	$L__BB0_21;
 
 $L__BB0_22:
-	ld.param.u64 	%rd139, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1];
+	ld.param.u64 	%rd139, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_1];
 	setp.ge.u64 	%p21, %rd159, %rd139;
 	@%p21 bra 	$L__BB0_31;
 
-	ld.param.u64 	%rd140, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0];
-	ld.param.u64 	%rd135, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3];
+	ld.param.u64 	%rd140, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_0];
+	ld.param.u64 	%rd135, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_3];
 	add.s64 	%rd127, %rd151, %rd135;
 	ld.local.u8 	%r2034, [%rd2];
 	ld.local.u8 	%r2035, [%rd2+1];
@@ -2199,7 +2199,7 @@ $L__BB0_28:
 	ld.local.v2.u8 	{%rs199, %rs200}, [%rd54+62];
 
 $L__BB0_30:
-	ld.param.u64 	%rd138, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
+	ld.param.u64 	%rd138, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
 	cvta.to.local.u64 	%rd137, %rd138;
 	ld.local.v4.u8 	{%rs156, %rs157, %rs158, %rs159}, [%rd54+64];
 	cvt.u16.u64 	%rs162, %rd64;
@@ -3292,7 +3292,7 @@ $L__BB0_1:
 	st.param.b64 	[param5+0], %rd149;
 	.param .b64 retval0;
 	call.uni (retval0), 
-	_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
+	_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
 	(
 	param0, 
 	param1, 
@@ -3319,7 +3319,7 @@ $L__BB0_1:
 	st.param.b64 	[param5+0], %rd103;
 	.param .b64 retval0;
 	call.uni (retval0), 
-	_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
+	_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
 	(
 	param0, 
 	param1, 
@@ -4407,7 +4407,7 @@ $L__BB0_8:
 	@%p13 bra 	$L__BB0_31;
 
 	add.u64 	%rd144, %SPL, 96;
-	ld.param.u64 	%rd143, [_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
+	ld.param.u64 	%rd143, [_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh_param_5];
 	cvta.to.local.u64 	%rd142, %rd143;
 	shl.b64 	%rd111, %rd151, 6;
 	shl.b64 	%rd112, %rd151, 5;
@@ -11803,7 +11803,7 @@ $L__BB1_30:
 	st.param.b64 	[param5+0], %rd141;
 	.param .b64 retval0;
 	call.uni (retval0), 
-	_ZN44_INTERNAL_e00bade2_13_pyrin_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
+	_ZN44_INTERNAL_e00bade2_13_SCR_cuda_cu_c72d89ce28blake3_compress_subtree_wideEPKhmPKjmhPh, 
 	(
 	param0, 
 	param1, 

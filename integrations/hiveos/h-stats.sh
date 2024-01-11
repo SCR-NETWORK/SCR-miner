@@ -1,7 +1,7 @@
 ####################################################################################
 ###
-### pyrin-miner
-### https://github.com/tmrlvi/pyrin-miner/releases
+### SCR-miner
+### https://github.com/tmrlvi/SCR-miner/releases
 ###
 ### Hive integration: Merlin
 ###
@@ -13,7 +13,7 @@
 # MAIN script body
 #######################
 
-. /hive/miners/custom/pyrin-miner/h-manifest.conf
+. /hive/miners/custom/SCR-miner/h-manifest.conf
 stats_raw=`cat $CUSTOM_LOG_BASENAME.log | grep -w "hashrate" | tail -n 1 `
 #echo $stats_raw
 

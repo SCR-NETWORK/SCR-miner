@@ -1,7 +1,7 @@
 ####################################################################################
 ###
-### pyrin-miner
-### https://github.com/tmrlvi/pyrin-miner/releases
+### SCR-miner
+### https://github.com/tmrlvi/SCR-miner/releases
 ###
 ### Hive integration: Merlin
 ###
@@ -15,15 +15,15 @@ fi
 cat > h-manifest.conf << EOF
 ####################################################################################
 ###
-### pyrin-miner
-### https://github.com/tmrlvi/pyrin-miner/releases
+### SCR-miner
+### https://github.com/tmrlvi/SCR-miner/releases
 ###
 ### Hive integration: Merlin
 ###
 ####################################################################################
 
 # The name of the miner
-CUSTOM_NAME=pyrin-miner
+CUSTOM_NAME=SCR-miner
 
 # Optional version of your custom miner package
 CUSTOM_VERSION=$1

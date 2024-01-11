@@ -1,7 +1,7 @@
 ####################################################################################
 ###
-### pyrin-miner
-### https://github.com/tmrlvi/pyrin-miner/releases
+### SCR-miner
+### https://github.com/tmrlvi/SCR-miner/releases
 ###
 ### Hive integration: Merlin
 ###

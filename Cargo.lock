@@ -1243,7 +1243,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "pyrin-miner"
+name = "SCR-miner"
 version = "0.2.1-GPU-0.7"
 dependencies = [
  "async-trait",
@@ -1282,7 +1282,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "pyrincuda"
+name = "SCRcuda"
 version = "0.1.0"
 dependencies = [
  "clap",
@@ -1290,12 +1290,12 @@ dependencies = [
  "env_logger",
  "log",
  "nvml-wrapper",
- "pyrin-miner",
+ "SCR-miner",
  "rand 0.8.4",
 ]
 
 [[package]]
-name = "pyrinopencl"
+name = "SCRopencl"
 version = "0.1.0"
 dependencies = [
  "clap",
@@ -1303,7 +1303,7 @@ dependencies = [
  "include_dir",
  "log",
  "opencl3",
- "pyrin-miner",
+ "SCR-miner",
  "rand 0.8.4",
 ]
 

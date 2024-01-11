@@ -1,10 +1,10 @@
 use crate::client::Client;
 use crate::pow::BlockSeed;
 use crate::pow::BlockSeed::{FullBlock, PartialBlock};
-use crate::proto::pyipad_message::Payload;
+use crate::proto::SCR_Network_message::Payload;
 use crate::proto::rpc_client::RpcClient;
 use crate::proto::{
-    GetBlockTemplateRequestMessage, GetInfoRequestMessage, PyipadMessage, NotifyBlockAddedRequestMessage,
+    GetBlockTemplateRequestMessage, GetInfoRequestMessage, SCRpadMessage, NotifyBlockAddedRequestMessage,
     NotifyNewBlockTemplateRequestMessage,
 };
 use crate::{miner::MinerManager, Error};
@@ -23,13 +23,13 @@ use tonic::{transport::Channel as TonicChannel, Streaming};
 
 static EXTRA_DATA: &str = concat!(env!("CARGO_PKG_VERSION"), "/", env!("PACKAGE_COMPILE_TIME"));
 static VERSION_UPDATE: &str = "0.11.15";
-type BlockHandle = JoinHandle<Result<(), PollSendError<PyipadMessage>>>;
+type BlockHandle = JoinHandle<Result<(), PollSendError<SCRpadMessage>>>;
 
 #[allow(dead_code)]
-pub struct PyipadHandler {
+pub struct SCRpadHandler {
     client: RpcClient<TonicChannel>,
-    pub send_channel: Sender<PyipadMessage>,
-    stream: Streaming<PyipadMessage>,
+    pub send_channel: Sender<SCRpadMessage>,
+    stream: Streaming<SCRpadMessage>,
     miner_address: String,
     mine_when_not_synced: bool,
     devfund_address: Option<String>,
@@ -41,7 +41,7 @@ pub struct PyipadHandler {
 }
 
 #[async_trait(?Send)]
-impl Client for PyipadHandler {
+impl Client for SCRpadHandler {
     fn add_devfund(&mut self, address: String, percent: u16) {
         self.devfund_address = Some(address);
         self.devfund_percent = percent;
@@ -56,7 +56,7 @@ impl Client for PyipadHandler {
         while let Some(msg) = self.stream.message().await? {
             match msg.payload {
                 Some(payload) => self.handle_message(payload, miner).await?,
-                None => warn!("pyrin message payload is empty"),
+                None => warn!("SCR message payload is empty"),
             }
         }
         Ok(())
@@ -67,7 +67,7 @@ impl Client for PyipadHandler {
     }
 }
 
-impl PyipadHandler {
+impl SCRpadHandler {
     pub async fn connect<D>(
         address: D,
         miner_address: String,
@@ -98,15 +98,15 @@ impl PyipadHandler {
         }))
     }
 
-    fn create_block_channel(send_channel: Sender<PyipadMessage>) -> (Sender<BlockSeed>, BlockHandle) {
-        // PyipadMessage::submit_block(block)
+    fn create_block_channel(send_channel: Sender<SCRpadMessage>) -> (Sender<BlockSeed>, BlockHandle) {
+        // SCRpadMessage::submit_block(block)
         let (send, recv) = mpsc::channel::<BlockSeed>(1);
         (
             send,
             tokio::spawn(async move {
                 ReceiverStream::new(recv)
                     .map(|block_seed| match block_seed {
-                        FullBlock(block) => PyipadMessage::submit_block(*block),
+                        FullBlock(block) => SCRpadMessage::submit_block(*block),
                         PartialBlock { .. } => unreachable!("All blocks sent here should have arrived from here"),
                     })
                     .map(Ok)
@@ -116,11 +116,11 @@ impl PyipadHandler {
         )
     }
 
-    async fn client_send(&self, msg: impl Into<PyipadMessage>) -> Result<(), SendError<PyipadMessage>> {
+    async fn client_send(&self, msg: impl Into<SCRpadMessage>) -> Result<(), SendError<SCRpadMessage>> {
         self.send_channel.send(msg.into()).await
     }
 
-    async fn client_get_block_template(&mut self) -> Result<(), SendError<PyipadMessage>> {
+    async fn client_get_block_template(&mut self) -> Result<(), SendError<SCRpadMessage>> {
         let pay_address = match &self.devfund_address {
             Some(devfund_address) if self.block_template_ctr.load(Ordering::SeqCst) <= self.devfund_percent => {
                 devfund_address.clone()
@@ -158,10 +158,10 @@ impl PyipadHandler {
                 }
             }
             Payload::GetInfoResponse(info) => {
-                info!("Pyipad version: {}", info.server_version);
-                let pyrin_version = Version::parse(&info.server_version)?;
+                info!("SCRpad version: {}", info.server_version);
+                let SCR_version = Version::parse(&info.server_version)?;
                 let update_version = Version::parse(VERSION_UPDATE)?;
-                match pyrin_version >= update_version {
+                match SCR_version >= update_version {
                     true => self.client_send(NotifyNewBlockTemplateRequestMessage {}).await?,
                     false => self.client_send(NotifyBlockAddedRequestMessage {}).await?,
                 };
@@ -173,7 +173,7 @@ impl PyipadHandler {
                 Some(e) => error!("Failed registering for new template notifications: {:?}", e),
             },
             Payload::NotifyBlockAddedResponse(res) => match res.error {
-                None => info!("Registered for block notifications (upgrade your Pyipad for better experience)"),
+                None => info!("Registered for block notifications (upgrade your SCRpad for better experience)"),
                 Some(e) => error!("Failed registering for block notifications: {:?}", e),
             },
             msg => info!("got unknown msg: {:?}", msg),
@@ -182,7 +182,7 @@ impl PyipadHandler {
     }
 }
 
-impl Drop for PyipadHandler {
+impl Drop for SCRpadHandler {
     fn drop(&mut self) {
         self.block_handle.abort();
     }

@@ -1,5 +1,5 @@
 use crate::proto::{
-    pyipad_message::Payload, GetBlockTemplateRequestMessage, GetInfoRequestMessage, PyipadMessage,
+    SCR_Network_message::Payload, GetBlockTemplateRequestMessage, GetInfoRequestMessage, SCRpadMessage,
     NotifyBlockAddedRequestMessage, NotifyNewBlockTemplateRequestMessage, RpcBlock, SubmitBlockRequestMessage,
 };
 use crate::{
@@ -7,19 +7,19 @@ use crate::{
     Hash,
 };
 
-impl PyipadMessage {
+impl SCRpadMessage {
     #[inline(always)]
     pub fn get_info_request() -> Self {
-        PyipadMessage { payload: Some(Payload::GetInfoRequest(GetInfoRequestMessage {})) }
+        SCRpadMessage { payload: Some(Payload::GetInfoRequest(GetInfoRequestMessage {})) }
     }
     #[inline(always)]
     pub fn notify_block_added() -> Self {
-        PyipadMessage { payload: Some(Payload::NotifyBlockAddedRequest(NotifyBlockAddedRequestMessage {})) }
+        SCRpadMessage { payload: Some(Payload::NotifyBlockAddedRequest(NotifyBlockAddedRequestMessage {})) }
     }
 
     #[inline(always)]
     pub fn submit_block(block: RpcBlock) -> Self {
-        PyipadMessage {
+        SCRpadMessage {
             payload: Some(Payload::SubmitBlockRequest(SubmitBlockRequestMessage {
                 block: Some(block),
                 allow_non_daa_blocks: false,
@@ -28,26 +28,26 @@ impl PyipadMessage {
     }
 }
 
-impl From<GetInfoRequestMessage> for PyipadMessage {
+impl From<GetInfoRequestMessage> for SCRpadMessage {
     fn from(a: GetInfoRequestMessage) -> Self {
-        PyipadMessage { payload: Some(Payload::GetInfoRequest(a)) }
+        SCRpadMessage { payload: Some(Payload::GetInfoRequest(a)) }
     }
 }
-impl From<NotifyBlockAddedRequestMessage> for PyipadMessage {
+impl From<NotifyBlockAddedRequestMessage> for SCRpadMessage {
     fn from(a: NotifyBlockAddedRequestMessage) -> Self {
-        PyipadMessage { payload: Some(Payload::NotifyBlockAddedRequest(a)) }
+        SCRpadMessage { payload: Some(Payload::NotifyBlockAddedRequest(a)) }
     }
 }
 
-impl From<GetBlockTemplateRequestMessage> for PyipadMessage {
+impl From<GetBlockTemplateRequestMessage> for SCRpadMessage {
     fn from(a: GetBlockTemplateRequestMessage) -> Self {
-        PyipadMessage { payload: Some(Payload::GetBlockTemplateRequest(a)) }
+        SCRpadMessage { payload: Some(Payload::GetBlockTemplateRequest(a)) }
     }
 }
 
-impl From<NotifyNewBlockTemplateRequestMessage> for PyipadMessage {
+impl From<NotifyNewBlockTemplateRequestMessage> for SCRpadMessage {
     fn from(a: NotifyNewBlockTemplateRequestMessage) -> Self {
-        PyipadMessage { payload: Some(Payload::NotifyNewBlockTemplateRequest(a)) }
+        SCRpadMessage { payload: Some(Payload::NotifyNewBlockTemplateRequest(a)) }
     }
 }
 

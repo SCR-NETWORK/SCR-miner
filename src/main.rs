@@ -6,7 +6,7 @@ use std::error::Error as StdError;
 use std::ffi::OsStr;
 
 use clap::{App, FromArgMatches, IntoApp};
-use pyrin_miner::PluginManager;
+use SCR_miner::PluginManager;
 use log::{error, info};
 use rand::{thread_rng, RngCore};
 use std::fs;
@@ -16,7 +16,7 @@ use std::thread::sleep;
 use std::time::Duration;
 
 use crate::cli::Opt;
-use crate::client::grpc::PyipadHandler;
+use crate::client::grpc::SCRpadHandler;
 use crate::client::stratum::StratumHandler;
 use crate::client::Client;
 use crate::miner::MinerManager;
@@ -24,13 +24,13 @@ use crate::target::Uint256;
 
 mod cli;
 mod client;
-mod pyipad_messages;
+mod SCR_Network_messages;
 mod miner;
 mod pow;
 mod target;
 mod watch;
 
-const WHITELIST: [&str; 4] = ["libpyrincuda", "libpyrinopencl", "pyrincuda", "pyrinopencl"];
+const WHITELIST: [&str; 4] = ["libSCRcuda", "libSCRopencl", "SCRcuda", "SCRopencl"];
 
 pub mod proto {
     #![allow(clippy::derive_partial_eq_without_eq)]
@@ -69,13 +69,13 @@ fn filter_plugins(dirname: &str) -> Vec<String> {
 }
 
 async fn get_client(
-    pyrin_address: String,
+    SCR_address: String,
     mining_address: String,
     mine_when_not_synced: bool,
     block_template_ctr: Arc<AtomicU16>,
 ) -> Result<Box<dyn Client + 'static>, Error> {
-    if pyrin_address.starts_with("stratum+tcp://") {
-        let (_schema, address) = pyrin_address.split_once("://").unwrap();
+    if SCR_address.starts_with("stratum+tcp://") {
+        let (_schema, address) = SCR_address.split_once("://").unwrap();
         Ok(StratumHandler::connect(
             address.to_string().clone(),
             mining_address.clone(),
@@ -83,9 +83,9 @@ async fn get_client(
             Some(block_template_ctr.clone()),
         )
         .await?)
-    } else if pyrin_address.starts_with("grpc://") {
-        Ok(PyipadHandler::connect(
-            pyrin_address.clone(),
+    } else if SCR_address.starts_with("grpc://") {
+        Ok(SCRpadHandler::connect(
+            SCR_address.clone(),
             mining_address.clone(),
             mine_when_not_synced,
             Some(block_template_ctr.clone()),
@@ -102,14 +102,14 @@ async fn client_main(
     plugin_manager: &PluginManager,
 ) -> Result<(), Error> {
     let mut client = get_client(
-        opt.pyrin_address.clone(),
+        opt.SCR_address.clone(),
         opt.mining_address.clone(),
         opt.mine_when_not_synced,
         block_template_ctr.clone(),
     )
     .await?;
 
-    client.add_devfund(String::from("pyrin:qzj9kz0kmc3rxl9mw86mlda2cqmvp3xhavx9h2jud5ehdchvruql6ey64r8kz"), 2);
+    client.add_devfund(String::from("SCR:qzj9kz0kmc3rxl9mw86mlda2cqmvp3xhavx9h2jud5ehdchvruql6ey64r8kz"), 2);
     client.register().await?;
     let mut miner_manager = MinerManager::new(client.get_block_channel(), opt.num_threads, plugin_manager);
     client.listen(&mut miner_manager).await?;
@@ -126,7 +126,7 @@ async fn main() -> Result<(), Error> {
     let mut path = current_exe().unwrap_or_default();
     path.pop(); // Getting the parent directory
     let plugins = filter_plugins(path.to_str().unwrap_or("."));
-    let (app, mut plugin_manager): (App, PluginManager) = pyrin_miner::load_plugins(Opt::into_app(), &plugins)?;
+    let (app, mut plugin_manager): (App, PluginManager) = SCR_miner::load_plugins(Opt::into_app(), &plugins)?;
 
     let matches = app.get_matches();
 
@@ -135,7 +135,7 @@ async fn main() -> Result<(), Error> {
     opt.process()?;
     env_logger::builder().filter_level(opt.log_level()).parse_default_env().init();
     info!("=================================================================================");
-    info!("                 Pyrin-Miner GPU {}", env!("CARGO_PKG_VERSION"));
+    info!("                 SCR-Miner GPU {}", env!("CARGO_PKG_VERSION"));
     info!(" Mining for: {}", opt.mining_address);
     info!("=================================================================================");
     info!("Found plugins: {:?}", plugins);
